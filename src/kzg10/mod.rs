@@ -341,7 +341,7 @@ impl<E: PairingEngine> KZG10<E> {
             let mut temp = w.mul(*z);
             temp.add_assign_mixed(&c.0);
             let c = temp;
-            g_multiplier += &(randomizer * &v);
+            g_multiplier += &(randomizer * v);
             if let Some(random_v) = proof.random_v {
                 gamma_g_multiplier += &(randomizer * &random_v);
             }

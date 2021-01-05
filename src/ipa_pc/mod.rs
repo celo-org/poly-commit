@@ -647,11 +647,11 @@ impl<G: AffineCurve, D: Digest> PolynomialCommitment<G::ScalarField> for InnerPr
 
             ff_fft::cfg_iter_mut!(coeffs_l)
                 .zip(coeffs_r)
-                .for_each(|(c_l, c_r)| *c_l += &(round_challenge_inv * &c_r));
+                .for_each(|(c_l, c_r)| *c_l += &(round_challenge_inv * *c_r));
 
             ff_fft::cfg_iter_mut!(z_l)
                 .zip(z_r)
-                .for_each(|(z_l, z_r)| *z_l += &(round_challenge * &z_r));
+                .for_each(|(z_l, z_r)| *z_l += &(round_challenge * *z_r));
 
             ff_fft::cfg_iter_mut!(key_proj_l)
                 .zip(key_r)
